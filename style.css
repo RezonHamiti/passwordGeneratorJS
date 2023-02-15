@@ -26,6 +26,12 @@ body {
   align-content: center;
 }
 
+.main-container-flex {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 
 h1 {
   font-size: 3em;
@@ -39,7 +45,7 @@ h1 {
 p {
   font-size: 1.2rem;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 45px;
 }
 
 button {
@@ -71,8 +77,6 @@ input {
 
 .flex-container-pw {
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
 }
 
 .pw-container {
