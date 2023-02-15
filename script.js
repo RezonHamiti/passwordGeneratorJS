@@ -4,9 +4,11 @@ let pwRight = document.querySelector(".pw-container.right");
 let copyLeft = document.querySelector("#copy-left");
 let copyRight = document.querySelector("#copy-right");
 let copyAlert = document.querySelector("#copy-alert");
-// characters for the generated password
+let incNumbers = document.querySelector("#include-numbers");
+let incChars = document.querySelector("#include-special-characters");
 
-const characters = [
+// characters for the generated password
+let characters = [
   "A",
   "B",
   "C",
@@ -59,48 +61,70 @@ const characters = [
   "x",
   "y",
   "z",
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "~",
-  "`",
-  "!",
-  "@",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "_",
-  "-",
-  "+",
-  "=",
-  "{",
-  "[",
-  "}",
-  "]",
-  ",",
-  "|",
-  ":",
-  ";",
-  "<",
-  ">",
-  ".",
-  "?",
-  "/",
 ];
 
+// based on checkbox, include or exclude numbers/special chars from the result
+
+function updatedCharacters() {
+  if (incNumbers.checked) {
+    characters = characters.concat([
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+    ]);
+  } else {
+    characters = characters.filter((char) => !/[0-9]/.test(char));
+  }
+  if (incChars.checked) {
+    characters = characters.concat([
+      "~",
+      "`",
+      "!",
+      "@",
+      "#",
+      "$",
+      "%",
+      "^",
+      "&",
+      "*",
+      "(",
+      ")",
+      "_",
+      "-",
+      "+",
+      "=",
+      "{",
+      "[",
+      "}",
+      "]",
+      ",",
+      "|",
+      ":",
+      ";",
+      "<",
+      ">",
+      ".",
+      "?",
+      "/",
+    ]);
+    // if its unchecked the filter method removes the specified value
+  } else {
+    characters = characters.filter(
+      (char) => !/[~`!@#$%^&*()_+\-={}\[\]|\\:;"'<>,.?\/]/.test(char)
+    );
+  }
+}
+
+// generate a random combination of characters
 function generatePassword() {
+  updatedCharacters();
   let passwordLeft = "";
   let passwordRight = "";
   for (let i = 0; i < 15; i++) {
@@ -117,6 +141,7 @@ function generatePassword() {
   pwRight.value = passwordRight;
 }
 
+// copy the password to one side based on input
 function copyPasswordText(pwInput) {
   if (pwInput.value == null || pwInput.value == "") {
     copyAlert.textContent = "Generate a password first.";
@@ -128,6 +153,10 @@ function copyPasswordText(pwInput) {
   }
 }
 
-copyLeft.addEventListener("click", function() { copyPasswordText(pwLeft)});
-copyRight.addEventListener("click", function() { copyPasswordText(pwRight)});
+copyLeft.addEventListener("click", function () {
+  copyPasswordText(pwLeft);
+});
+copyRight.addEventListener("click", function () {
+  copyPasswordText(pwRight);
+});
 passwordBtn.addEventListener("click", generatePassword);
