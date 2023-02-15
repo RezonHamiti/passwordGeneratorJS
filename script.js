@@ -3,7 +3,7 @@ let pwLeft = document.querySelector(".pw-container.left");
 let pwRight = document.querySelector(".pw-container.right");
 let copyLeft = document.querySelector("#copy-left");
 let copyRight = document.querySelector("#copy-right");
-
+let copyAlert = document.querySelector("#copy-alert");
 // characters for the generated password
 
 const characters = [
@@ -124,7 +124,7 @@ function copyLeftText() {
     pwLeft.ariaSelected;
     pwLeft.setSelectionRange(0, 999999);
     navigator.clipboard.writeText(pwLeft.value);
-    console.log(pwLeft.value);
+    copyAlert.textContent = "Left password copied!";
   }
 }
 
@@ -135,7 +135,7 @@ function copyRightText() {
     pwRight.ariaSelected;
     pwRight.setSelectionRange(0, 999999);
     navigator.clipboard.writeText(pwRight.value);
-    console.log(pwRight.value);
+    copyAlert.textContent = "Right password copied!";
   }
 }
 
