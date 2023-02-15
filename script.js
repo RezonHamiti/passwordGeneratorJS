@@ -117,17 +117,28 @@ function generatePassword() {
   pwRight.value = passwordRight;
 }
 
-function copyPasswordText(pwInput) {
-  if (pwInput.value == null || pwInput.value == "") {
-    copyAlert.textContent = "Generate a password first.";
+function copyLeftText() {
+  if (pwLeft.value == null || pwLeft.value == "") {
+    console.log("Generate a password first.");
   } else {
-    pwInput.ariaSelected;
-    pwInput.setSelectionRange(0, 999999);
-    navigator.clipboard.writeText(pwInput.value);
-    copyAlert.textContent = pwInput.id + " password copied";
+    pwLeft.ariaSelected;
+    pwLeft.setSelectionRange(0, 999999);
+    navigator.clipboard.writeText(pwLeft.value);
+    copyAlert.textContent = "Left password copied!";
   }
 }
 
-copyLeft.addEventListener("click", function() { copyPasswordText(pwLeft)});
-copyRight.addEventListener("click", function() { copyPasswordText(pwRight)});
+function copyRightText() {
+  if (pwRight.value == null || pwRight.value == "") {
+    console.log("Generate a password first.");
+  } else {
+    pwRight.ariaSelected;
+    pwRight.setSelectionRange(0, 999999);
+    navigator.clipboard.writeText(pwRight.value);
+    copyAlert.textContent = "Right password copied!";
+  }
+}
+
+copyLeft.addEventListener("click", copyLeftText);
+copyRight.addEventListener("click", copyRightText);
 passwordBtn.addEventListener("click", generatePassword);
