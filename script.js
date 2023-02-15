@@ -1,12 +1,10 @@
 let passwordBtn = document.querySelector("#generate-pw-button");
 let pwLeft = document.querySelector(".pw-container.left");
 let pwRight = document.querySelector(".pw-container.right");
-let copy
-
+let copyLeft = document.querySelector("#copy-left");
+let copyRight = document.querySelector("#copy-right");
 
 // characters for the generated password
-
-
 
 const characters = [
   "A",
@@ -103,24 +101,44 @@ const characters = [
 ];
 
 function generatePassword() {
-    let passwordLeft = "";
-    let passwordRight = "";
-    for (let i = 0; i < 16; i++) {
-      let randomNum = Math.floor(Math.random() * characters.length);
-      let randomChar = characters[randomNum];
-      passwordLeft += randomChar;
-    }
-    for (let i = 0; i < 16; i++) {
-        let randomNum = Math.floor(Math.random() * characters.length);
-        let randomChar = characters[randomNum];
-        passwordRight += randomChar;
-      }
-    pwLeft.value = passwordLeft;
-    pwRight.value = passwordRight;
+  let passwordLeft = "";
+  let passwordRight = "";
+  for (let i = 0; i < 15; i++) {
+    let randomNum = Math.floor(Math.random() * characters.length);
+    let randomChar = characters[randomNum];
+    passwordLeft += randomChar;
   }
+  for (let i = 0; i < 15; i++) {
+    let randomNum = Math.floor(Math.random() * characters.length);
+    let randomChar = characters[randomNum];
+    passwordRight += randomChar;
+  }
+  pwLeft.value = passwordLeft;
+  pwRight.value = passwordRight;
+}
 
+function copyLeftText() {
+  if (pwLeft.value == null || pwLeft.value == "") {
+    console.log("Generate a password first.");
+  } else {
+    pwLeft.ariaSelected;
+    pwLeft.setSelectionRange(0, 999999);
+    navigator.clipboard.writeText(pwLeft.value);
+    console.log(pwLeft.value);
+  }
+}
 
+function copyRightText() {
+  if (pwRight.value == null || pwRight.value == "") {
+    console.log("Generate a password first.");
+  } else {
+    pwRight.ariaSelected;
+    pwRight.setSelectionRange(0, 999999);
+    navigator.clipboard.writeText(pwRight.value);
+    console.log(pwRight.value);
+  }
+}
 
- 
-
+copyLeft.addEventListener("click", copyLeftText);
+copyRight.addEventListener("click", copyRightText);
 passwordBtn.addEventListener("click", generatePassword);

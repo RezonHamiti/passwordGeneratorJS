@@ -92,13 +92,12 @@ input {
 }
 
 #copy-left, #copy-right {
-  width: 200px;
+  width: 100px;
   height: 50px;
   background-color: rgb(56, 60, 60);
   margin: 10px;
-  text-align: center;
   border-radius: 10px;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #4caf50;
   margin-top: 50px;
 }
