@@ -103,6 +103,16 @@ input {
   margin-top: 50px;
 }
 
+
+#copy-alert {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+
+
 @media screen and (max-width: 1070px) {
   .flex-container-pw {
     flex-direction: column;
@@ -124,11 +134,4 @@ input {
   #copyLeft, #copyRight {
     margin-top: 5px;
   }
-}
-
-#copy-alert {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 0 auto;
-  padding-top: 50px;
 }
