@@ -91,7 +91,7 @@ input {
   margin-top: 50px;
 }
 
-#copyLeft, #copyRight {
+#copy-left, #copy-right {
   width: 200px;
   height: 50px;
   background-color: rgb(56, 60, 60);

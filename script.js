@@ -1,6 +1,7 @@
 let passwordBtn = document.querySelector("#generate-pw-button");
 let pwLeft = document.querySelector(".pw-container.left");
 let pwRight = document.querySelector(".pw-container.right");
+let copy
 
 
 // characters for the generated password
